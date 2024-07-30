@@ -8,6 +8,7 @@ This project is a coding challenge for Deel, demonstrating skills in development
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Running Tests](#running-tests)
+- [CI/CD Pipeline](#cicd-pipeline)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -20,6 +21,7 @@ This project is a coding challenge for Deel, demonstrating skills in development
 - Integration with CI/CD pipelines for automated testing. (WIP)
 
 ## Project Structure
+
 ```
 The repository is organized as follows:
 deel-salary-insights/
@@ -55,6 +57,7 @@ cd deel-salary-insights
 ```
 
 ### Install Dependencies
+
 ```bash
 npm install
 ```
@@ -66,6 +69,7 @@ After installing the dependencies, you can run the automated tests using Playwri
 ### Running All Tests
 
 To run all tests, use the following command:
+
 ```bash
 npm run test
 ```
@@ -73,9 +77,16 @@ npm run test
 ### Viewing Test Results
 
 Playwright provides a built-in test reporter. You can view the results in the terminal after running the tests. For a more detailed report, you can use:
+
 ```bash
 npm run report
 ```
+
+### CI/CD Pipeline
+
+This repository uses GitHub Actions for continuous integration and continuous deployment (CI/CD). Every time a new change is pushed to the repository, the tests are automatically run to ensure the integrity and functionality of the application.
+
+You can find the CI/CD configuration in the .github/workflows directory.
 
 ### License
 
@@ -85,4 +96,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 If you have any questions or suggestions, feel free to contact:
 
-	•	Adels Trinidad: adelquis.trinidad@gmail.com
+ • Adels Trinidad: adelquis.trinidad@gmail.com
