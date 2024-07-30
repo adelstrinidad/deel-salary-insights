@@ -1,0 +1,15 @@
+{
+  "name": "salary-insights",
+  "version": "1.0.0",
+  "description": "Automation challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "author": "adelstrinidad",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^22.0.0"
+  }
+}
