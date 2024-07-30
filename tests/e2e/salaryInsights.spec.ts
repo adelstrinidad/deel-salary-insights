@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import SalaryInsights from "../pages/salaryInsights";
+import SalaryInsights from "../pages/salaryInsights.page";
 
 test.beforeEach("", async ({ page }) => {
   await page.goto("https://growth.deel.training/dev/salary-insights");
