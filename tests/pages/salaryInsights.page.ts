@@ -11,14 +11,21 @@ class SalaryInsights {
   private readonly filterBarLabel: Promise<Array<Locator>>;
   private readonly salaryTableTitle: Locator;
   private readonly promoQuestion: Locator;
+  private readonly closeArrow: Locator;
+  private readonly openArrow: Locator;
   refineYourViewLabel: Locator;
 
   constructor(page: Page) {
     this.roleField = page.locator(`[data-qa="role-field"]`);
     this.roleInput = page.locator(`[name="role"]`);
-    this.expandMoreInfoIcon = this.roleField.filter({
-      has: page.locator(`[data-testid="ExpandMoreIcon"]`),
-    });
+    // this.expandMoreInfoIcon = this.roleField.filter({
+    //   has: page.locator(`[data-testid="ExpandMoreIcon"]`),
+    // });
+    this.expandMoreInfoIcon = this.roleField.locator(
+      `[data-testid="ExpandMoreIcon"]`
+    );
+    this.closeArrow = this.roleField.locator(`[title="Close"]`);
+    this.openArrow = this.roleField.locator(`[title="Open"]`);
     this.listbox = page.locator(`[role="listbox"]`);
     this.countryCombo = page.getByRole("combobox", { name: "country" });
     this.searchButton = page.getByRole("button", { name: "Search" });
@@ -35,8 +42,12 @@ class SalaryInsights {
   async fillAndSelectRole(role: string, page: Page) {
     await this.roleInput.click();
     await this.roleInput.fill(role);
-    await page.waitForTimeout(3000); // I tried many different things expecting to see the list and nothing worked
-    await this.expandMoreInfoIcon.click();
+    await this.openArrow.click();
+    // wait until the dropdwon is opened
+    while (!(await this.closeArrow.isVisible())) {
+      await this.expandMoreInfoIcon.click();
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    }
     await page.waitForSelector("ul", { state: "visible" });
     await this.listbox.filter({ hasText: role }).click();
   }
