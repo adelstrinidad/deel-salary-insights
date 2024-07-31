@@ -63,11 +63,13 @@ class SalaryInsights {
   }
 
   async validateFilters(
-    input: string[],
+    role: string,
+    country: string,
+    currency: string,
     filterValues: string[],
     expect: Expect
   ) {
-    filterValues.unshift(input[0], input[1]);
+    filterValues.unshift(role, country);
     (await this.filterBarLabel).forEach(async (el) => {
       expect(filterValues).toContain(await el.textContent());
     });
@@ -75,7 +77,7 @@ class SalaryInsights {
       .locator("p")
       .nth(3)
       .textContent();
-    expect(filterCurrency).toEqual(input[2]);
+    expect(filterCurrency).toEqual(currency);
   }
 
   async getSalaryTableTitle() {

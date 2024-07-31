@@ -20,6 +20,7 @@ test.describe("salary-insights tests", () => {
     }) => {
       const role = `${input[0]}`;
       const country = `${input[1]}`;
+      const currency = `${input[2]}`
       const filterValues = ["Senior Level", "Annual Salary"];
 
       const salaryInsights = new SalaryInsights(page);
@@ -29,7 +30,7 @@ test.describe("salary-insights tests", () => {
       await salaryInsights.selectSearchButton();
       await expect(salaryInsights.refineYourViewLabel).toBeVisible();
 
-      await salaryInsights.validateFilters(input, filterValues, expect);
+      await salaryInsights.validateFilters(role, country, currency, filterValues, expect);
 
       const salaryTableTitle = await salaryInsights.getSalaryTableTitle();
       expect(salaryTableTitle).toEqual(
